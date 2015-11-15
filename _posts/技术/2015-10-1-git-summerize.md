@@ -13,6 +13,193 @@ description:
 git clone -b release git@192.168.22.100:root/portal.git
 git clone默认克隆的是主分支
 要想获得其他分支
-git checkout  -b release origin/release
+git checkout -b release origin/release
 ```
+
+
+###git log 查看文件提交记录
+
+```
+git log                        #查看所有提交记录，只是简单信息
+git log -n                     #查看最近n条提交记录
+git log dirname/filename       #查看某目录或文件的提交记录
+git log branchname -n filename #具体到哪个分支
+git log -p filename            #查看具体哪一行发生了什么变化
+git blame                      #显示每一行的作者以及提交时间
+```
+
+
+###git diff 比较文件内容
+
+```
+1.比较工作目录(working tree)和暂存区(stage)的文件内容 
+        git diff 文件名
+2.比较暂存区和本地仓库 的文件内容 
+         git diff  --cached 文件名
+3.比较本地仓库和工作区的文件内容 
+         git diff   HEAD  文件名
+4.比较某个文件从特定点开始的修改情况
+          git diff   版本号 文件名
+     如果文件名省略，则是指所有文件
+     第三条只是第四条的特例，最近一次提交之后的修改，那自然就是本地仓库与工作区的比较
+5.两次提交差异对比
+         git diff 版本1   版本2
+         git diff 版本1   版本2 --state   加state参数是比较两个版本的差异统计数字，比如那个文件增加了内容，删除了内容
+         git diff 版本1   版本2  [--state] 文件名  指定具体文件
+6.比较两个分支
+        git diff master  ...  dev  比较dev与从master建立分支的那个节点的差异
+        git diff master dev        比较dev与master分支的差异，也就是两个分支的最后版本的差异
+```
+
+###git branch            
+
+```
+git branch                        #查看本地分支
+git branch -r                     #查看远程分支
+git branch -a                     #查看本地和远程分支
+
+git branch newbranch              #创建新分支,不切换到新分支
+git checkout -b newbranch         #创建并切换到新分支
+git branch -m oldbranch newbranch #重命名分支
+
+git branch -d branchname          #删除本地分支
+git branch -r -d branchname       #删除远程分支
+git branch -v                     #查看各分支最后一次提交的信息
+```
+
+###分支操作
+
+#下面说的操作时在本地进行的
+1.首先创建分支
+        git branch new
+2.master分支和new分支经过若干次提交之后，将new分支合并到master分支上
+        git checkout master
+        git merge new   #合并操作，如果有冲突需要手动解决冲突 然后add commit push
+3.如果本地new分支没用了可以删除
+        git branch -d new
+
+#如果要获取远程的某个分支
+        git checkout -b new  origion/new
+#如果要将本地分支推送到远程
+        git checkout new2
+        git push origin new2
+#如果要删除远程分支
+        git branch -r -d origin/new2   · #删除本地的fork
+        git push origin  :new2   #将本地空仓库推送到服务端，也就是删除。分号前面的空格必须要有
+    
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+移除文件发现的问题
+如果你通过 rm命令删除了某个文件
+然后git add .
+会出现警告信息
+你可以根据提示操作git add --all 然后 git commit -m   
+或者直接 git commit -m 
+
+或者你删除文件的时候使用 git rm 命令  接下来直接 git commit -m就行
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+git clean
+1. 放弃未add的更改
+         git checkout -- filename
+2. 放弃未commit的更改
+        git reset HEAD [文件名]
+3. 放弃添加的未add的文件 
+        git clearn [-n -f -df] [文件名]
+        -n 显示要删除的文件和目录
+        -f  删除文件 force
+        -df 删除目录 force directory
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+git 修改最后一次注释
+修改commit 还没push的注释信息
+git commit   --amend
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+回滚
+本地仓库回滚
+1.回滚工作目录，也就是没有执行add操作, 此操作将丢失在工作区的更改
+        git    checkout     --        filename
+2.回滚暂存区，也就是执行了add操作，但是没有执行commit操作，此操作将commit之前的更改保存到工作区
+        git    reset           HEAD   filename
+3.回滚本地版本库， 也就是已经执行了commit 操作，
+        git    reset      [--mixed|--soft|--hard]  commit_id
+        --mixed（默认）  回滚到指定版本，之前的操作保存在工作区，可以继续add，commit，运行git status 显示有内容需要add
+        --soft                     回滚到指定版本，之前的操作保存到暂存区，运行git status 显示有内容需要commit
+        --hard                   回滚到指定版本，之前的操作全部被丢弃，运行git status  没有变化
+
+
+远程仓库回滚
+先将本地版本库回滚到指定版本
+        git reset commit_id
+push 到远程版本库
+        git push origin master -f     要使用-f参数，否则会提示不能提交到远程版本库，因为本地版本库落后于远程版本库
+
+上面这个操作是很危险的，所以进行以上操作之前先备份
+        git branch back                      创建本地备份分支
+        git push orgin back:back       将本地备份分支提交到远程版本库
+        git push origin :master           强制将本地版本库提交到远程版本库
+
+等一切完成之后在删除备份分支，不要太过着急删除分支
+        git branch -d back 删除本地分支
+        git branch -r -d  origin/back  删除远程分支
+        git push origin :back      
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+git rm --cache
+已经被git跟踪的文件如何添加忽略？
+
+场景：文件Gemfile.lock已经添加到版本控制系统，想要git不在跟踪怎么做。
+直接添加文件路径到.gitignore中是不起作用的。
+
+方案：git rm --cache Gemfile.lock
+更新 .gitignore 忽略Gemfile.lock
+        git commit -m "忽略已经被git管理的文件"
+        git push origin 版本库
+如果别人从远程仓库pull代码，Gemfile.lock将被冲掉，所以如果有必要需要备份此文件。
+
+测试：修改Gemfile.lock, git status, 此时没有显示Gemfile.lock被修改
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+git fetch
+git pull 等价于 git fetch  +git merge 
+其实两者各有利弊，理论上git fetch 更能避免产生问题，但有时代码很多不可能手动比较
+
+使用 git fetch  
+git   fetch    orgin      master:tmp  如果不写tmp分支则会自动创建一个origin/HEAD
+git   diff       master    tmp
+git   merge  tmp
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+添加远程端仓库
+git  remote add sae(远程端名字)  https://git.sinacloud.com/codergma/
+将本地master分支推送到远程仓库sae 的1分支
+git push sae master:1
+git push sae 1  将当前分支推送到sae的1分支上
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
