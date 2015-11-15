@@ -69,7 +69,9 @@ git branch -v                     #查看各分支最后一次提交的信息
 
 ###分支操作
 
-#下面说的操作时在本地进行的
+```
+
+下面说的操作时在本地进行的
 1.首先创建分支
         git branch new
 2.master分支和new分支经过若干次提交之后，将new分支合并到master分支上
@@ -96,8 +98,7 @@ git branch -v                     #查看各分支最后一次提交的信息
 如果你通过 rm命令删除了某个文件
 然后git add .
 会出现警告信息
-你可以根据提示操作git add --all 然后 git commit -m   
-或者直接 git commit -m 
+你可以根据提示操作git add --all :/ 然后 git commit -m   
 
 或者你删除文件的时候使用 git rm 命令  接下来直接 git commit -m就行
 ```
@@ -116,13 +117,13 @@ git branch -v                     #查看各分支最后一次提交的信息
         -f  删除文件 force
         -df 删除目录 force directory
 ```
-###git 修改最后一次注释
+###修改最后一次注释
 
 ```
-
 修改commit 还没push的注释信息
 git commit   --amend
 ```
+
 ###回滚
 
 ```
@@ -143,28 +144,26 @@ git commit   --amend
 先将本地版本库回滚到指定版本
         git reset commit_id
 push 到远程版本库
-        git push origin master -f     要使用-f参数，否则会提示不能提交到远程版本库，因为本地版本库落后于远程版本库
+        git push origin master -f     #要使用-f参数，否则会提示不能提交到远程版本库，因为本地版本库落后于远程版本库
 
 上面这个操作是很危险的，所以进行以上操作之前先备份
-        git branch back                      创建本地备份分支
-        git push orgin back:back       将本地备份分支提交到远程版本库
-        git push origin :master           强制将本地版本库提交到远程版本库
-
+        git branch back               #创建本地备份分支
+        git push orgin back:back      #将本地备份分支提交到远程版本库
+        git push origin :master       #强制将本地版本库提交到远程版本库
 等一切完成之后在删除备份分支，不要太过着急删除分支
         git branch -d back 删除本地分支
         git branch -r -d  origin/back  删除远程分支
         git push origin :back      
 ```
-###git rm --cache
+
+###已经被git跟踪的文件如何添加忽略？
 
 ```
-
-已经被git跟踪的文件如何添加忽略？
 
 场景：文件Gemfile.lock已经添加到版本控制系统，想要git不在跟踪怎么做。
 直接添加文件路径到.gitignore中是不起作用的。
 
-方案：git rm --cache Gemfile.lock
+方案：git rm --cache Gemfile.lock #从暂存区域移除
 更新 .gitignore 忽略Gemfile.lock
         git commit -m "忽略已经被git管理的文件"
         git push origin 版本库
