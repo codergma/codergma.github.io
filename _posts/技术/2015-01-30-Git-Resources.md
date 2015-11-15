@@ -9,7 +9,7 @@ description:
 
 master: 默认开发分支
 
-origin: 默认远程版本库
+origin: 默认远程版本库名字
 
 Head: 默认开发分支
 
