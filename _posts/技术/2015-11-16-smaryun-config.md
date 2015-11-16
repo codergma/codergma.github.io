@@ -19,6 +19,7 @@ description:
 
 - 下载sublime　deb包
 -　sudo dpkg -i <filename>
+
 ```
 
 #按照自己的习惯配置
