@@ -19,6 +19,7 @@ description:
 -　sudo dpkg -i <filename>
 - 按照自己的习惯配置
 ```
+
 {
 	"default_line_ending": "unix",
 	"font_size": 16,
@@ -30,6 +31,7 @@ description:
 }
 ```
 ###安装搜狗输入法
+
 - 下载sougou deb包
 - sudo dpkg -i <filename>
 - 安装完成之后先不要急着重启电脑，否则可能会出现循环登录的问题，可能是字符集的问题．
