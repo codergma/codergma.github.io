@@ -100,7 +100,47 @@ sudo vim /etc/php5/apache2/php.ini
 sudo service apache2 restart
 ```
 
+###部署Ruby环境
 
+```
+
+curl -L http://get.rvm.io | bash -s stable 
+source $HOME/.rvm/scripts/rvm				#安装RVM　，管理多个ruby环境
+type rvm | head -n 1 		#测试RVM是否安装成功
+rvm is a function			#表示安装成功
+rvm list know				#列出rvm已知的ruby版本
+rvm install 2.0				#选择需要的ruby进行安装
+rvm use 2.0					#使用2.0版本,
+#(Run command as login shell option is checked under the Title and Command tab in Profile Preferences.)
+ruby -v 					#当前运行的ruby版本
+rvm use 2.0 --default       #设置某版本为默认版本
+```
+
+###RubyGems
+
+- RubyGems是一个方便而强大的Ruby程序包管理器,随ruby1.9+安装.
+
+###安装bundler
+
+- bundler相当于多个RubyGems批处理运行。在配置文件gemfilel里说明你的应用依赖哪些第三方包，他自动帮你下载安装多个包，并且会下载这些包依赖的包。
+- http://bundler.io/
+```
+
+gem source -l      #查看源, 如果你不能翻墙，那么就换成淘宝镜像
+gem source --remove  https://rubygems.org/    #移除官方源
+gem source --add     https://ruby.taobao.org/ #添加淘宝镜像
+gem install bundler
+```
+
+###安装Rails
+
+- 必须安装了ruby        
+- 必须安装了RubyGems    #ruby1.9+默认集成了
+- SQLite3   		  #类Unix自带sqlite3, sqlite3 --version
+
+```
+gem install rails
+```
 
 
 
