@@ -8,6 +8,7 @@ description:
 ---
 
 ###VMware Tools
+
 - 点击虚拟机中的安装VMware Tools会自动下载安装包到/media/用户名/VMware目录中,
 - 在此目录中是不能解压的，需要移动到家目录下.
 - sudo tar -xzvf <filename>  
@@ -15,12 +16,12 @@ description:
 - 回车回车，默认配置即可
 
 ###安装sublime
+
 - 下载sublime　deb包
 -　sudo dpkg -i <filename>
-- 按照自己的习惯配置
-
 ```
 
+#按照自己的习惯配置
 {
 	"default_line_ending": "unix",
 	"font_size": 16,
@@ -31,6 +32,12 @@ description:
 	"auto_complete_triggers": [ {"selector": "text.html", "characters": "<"} ],
 }
 ```
+
+###安装vim
+
+- sudo apt-get install vim 
+- 习惯配置 https://github.com/codergma/MyConfig.git
+
 ###安装搜狗输入法
 
 - 下载sougou deb包
@@ -40,8 +47,71 @@ description:
 - 点击小企鹅　添加搜狗输入法
 - 关于sublime里不能使用搜狗输入法，自行谷歌百度之(http://www.zhuantilan.com/jiqiao/46423.html)
 
-###安装git,vim,curl,wget等常用软件
-- sudo apt-get install vim git curl wget -y
+###安装git,curl,wget等常用软件
+- sudo apt-get install git curl wget -y
+
+###安装LAMP套件
+
+```
+sudo apt-get install apache2 mysql-server mysql-client php5-gd php5-mysql phpmyadmin -y
+#apache开启重定向
+sudo a2enmod rewrite              
+#集成应用中心需要php5-curl
+sudo apt-get install libcurl3 libcurl3-dev php5-curl
+#重启apache
+sudo service apache2 restart
+```
+
+###安装redis
+
+```
+ #源码编译安装
+ wget http://download.redis.io/releases/redis-3.0.0.tar.gz
+ tar -xzvf redis-3.0.0.tar.gz
+ cd redis-3.0.0
+ make
+ sudo make install
+ sudo ./utils/install_server.sh   #执行安装脚本，使用默认设置
+ #默认配置为
+ Port:				6379
+ Config file: 		/etc/redis/6379.conf
+ Log    file:		/var/log/redis_6379.log
+ Data dir   :       /var/lib/redis/6379
+ Executable : 		/usr/local/bin/redis-server
+ Cli Executable:    /usr/local/bin/redis-cli
+ #启动redis　client查看是否安装成功
+ redis-cli 
+ quit     　＃退出
+```
+
+###安装PHP的Redis扩展
+
+```
+git clone https://github.com/phpredis/phpredis.git
+cd phpredis
+sudo apt-get install php5-dev
+sudo phpize                   #用来安装php的扩展
+./configure
+make
+sudo make install
+sudo vim /etc/php5/apache2/php.ini
+添加extension=redis.so
+sudo service apache2 restart
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
