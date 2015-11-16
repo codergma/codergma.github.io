@@ -120,10 +120,10 @@ rvm use 2.0 --default       #设置某版本为默认版本
 
 - RubyGems是一个方便而强大的Ruby程序包管理器,随ruby1.9+安装.
 
-###安装bundler
+###[安装bundler](http://bundler.io/)
 
 - bundler相当于多个RubyGems批处理运行。在配置文件gemfilel里说明你的应用依赖哪些第三方包，他自动帮你下载安装多个包，并且会下载这些包依赖的包。
-- http://bundler.io/
+- 
 
 ```
 
