@@ -136,8 +136,8 @@ gem install bundler
 ###安装Rails
 
 - 必须安装了ruby        
-- 必须安装了RubyGems    #ruby1.9+默认集成了
-- SQLite3   		  #类Unix自带sqlite3, sqlite3 --version
+- 必须安装了RubyGems  $nbsp,$nbsp(ruby1.9+默认集成了)
+- SQLite3  $nbsp,$nbsp,$nbsp(类Unix自带sqlite3, sqlite3 --version)
 
 ```
 
