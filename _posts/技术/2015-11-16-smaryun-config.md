@@ -179,6 +179,31 @@ sudo apt-get install default-jdk  #phpstorm是用JAVA开发的，所以在安装
 ./bin/phpstorm.sh      #安装脚本
 ```
 
+###xdebug
+
+```
+
+wget http://xdebug.org/files/xdebug-2.2.5.tgz 
+tar -zxvf xdebug-2.2.5.tgz 
+cd xdebug-xdebug-2.2.5 
+phpize
+./configure
+make 
+sudo make install 
+
+#修改php.ini(以apache + php为例) 
+sudo vim /etc/php5/apache/php.ini 
+#在最后一行添加 
+zend_extension=xdebug.so 
+xdebug.auto_trace=on 
+xdebug.remote_port=9001 
+xdebug.idekey=PHPSTORM 
+xdebug.remote_enable=on
+sudo service apache2 restart 
+#测试xdebug环境是否配置成功。 
+#用phpinfo()输出环境信息，然后查找是否有xdebug相关信息 
+```
+
 
 
 
