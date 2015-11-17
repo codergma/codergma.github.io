@@ -19,9 +19,9 @@ rss_url: /pages/atom.xml
 gavatar: /public/img/deer3.png
 favicon: /public/img/deer3.png
 
-# disqus 设置
-disqus:
-  shortname: codergma.github.io
+# duoshuo 设置
+duoshuo:
+  shortname: codergma
 
 # 主题设置，自动激活某个标签
 active: 读书
