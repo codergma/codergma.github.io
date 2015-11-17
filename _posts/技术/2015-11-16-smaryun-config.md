@@ -147,7 +147,7 @@ rails new blog       		＃创建blog程序
 cd blog 
 bundle install       		#安装Gemfile中列出的gem
 cd blog
-rails server         		#启动rails内置服务器
+rails server         		#启动rails内置服务器,不能启动说明安装失败
 localhost:3000       		#冒烟测试
 ```
 
@@ -162,6 +162,13 @@ gem install passenger
 
 ```
 
+passenger-install-apache2-module  #如果缺少依赖，安装依赖重试
+#安装成功后复制其输出信息到/etc/apache2/apache2.conf
+LoadModule passenger_module /home/smaryun/.rvm/gems/ruby-2.0.0-p643/gems/passenger-5.0.21/buildout/apache2/mod_passenger.so
+   <IfModule mod_passenger.c>
+     PassengerRoot /home/smaryun/.rvm/gems/ruby-2.0.0-p643/gems/passenger-5.0.21
+     PassengerDefaultRuby /home/smaryun/.rvm/gems/ruby-2.0.0-p643/wrappers/ruby
+   </IfModule>
 ```
 
 
