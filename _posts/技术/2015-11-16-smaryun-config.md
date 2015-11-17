@@ -171,6 +171,13 @@ LoadModule passenger_module /home/smaryun/.rvm/gems/ruby-2.0.0-p643/gems/passeng
    </IfModule>
 ```
 
+###PhpStorm
+
+```
+
+sudo apt-get install default-jdk  #phpstorm是用JAVA开发的，所以在安装之前需要先安装jdk
+./bin/phpstorm.sh      #安装脚本
+```
 
 
 
