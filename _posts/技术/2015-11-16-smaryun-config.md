@@ -1,6 +1,6 @@
 ---
 layout: post
-title: ubuntu开发环境部署
+title: 开发环境部署(ubuntu)
 category: 技术
 tags: Linux
 keywords: 
