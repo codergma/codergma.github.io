@@ -99,13 +99,19 @@ sudo vim /etc/php5/apache2/php.ini
 添加extension=redis.so
 sudo service apache2 restart
 ```
+###Ruby相关概念
+
+- RVM 用于帮你安装Ruby环境，帮你管理多个Ruby环境，帮你管理你开发的每个Ruby应用使用机器上哪个Ruby环境。Ruby环境不仅仅是Ruby本身，还包括依赖的第三方Ruby插件。都由RVM管理.
+- RubyGems是一个方便而强大的Ruby程序包管理器,随ruby1.9+安装.
+- bundler相当于多个RubyGems批处理运行。在配置文件gemfilel里说明你的应用依赖哪些第三方包，他自动帮你下载安装多个包，并且会下载这些包依赖的包。
+- Rails 开发框架
+-　Passenger是一个Rails应用服务的管理工具，可以统一管理Rails进程的数量、生命周期、请求队列等等。
 
 ###部署Ruby环境
 
 ```
 
 curl -L http://get.rvm.io | bash -s stable 
-source $HOME/.rvm/scripts/rvm				#安装RVM　，管理多个ruby环境
 type rvm | head -n 1 		#测试RVM是否安装成功
 rvm is a function			#表示安装成功
 rvm list know				#列出rvm已知的ruby版本
@@ -116,14 +122,8 @@ ruby -v 					#当前运行的ruby版本
 rvm use 2.0 --default       #设置某版本为默认版本
 ```
 
-###RubyGems
-
-- RubyGems是一个方便而强大的Ruby程序包管理器,随ruby1.9+安装.
 
 ###安装bundler
-
-- bundler相当于多个RubyGems批处理运行。在配置文件gemfilel里说明你的应用依赖哪些第三方包，他自动帮你下载安装多个包，并且会下载这些包依赖的包。
-- http://bundler.io/
 
 ```
 
@@ -142,6 +142,26 @@ gem install bundler
 ```
 
 gem install rails
+sudo apt-get install nodejs #rails需要运行js的环境
+rails new blog       		＃创建blog程序
+cd blog 
+bundle install       		#安装Gemfile中列出的gem
+cd blog
+rails server         		#启动rails内置服务器
+localhost:3000       		#冒烟测试
+```
+
+###安装passenger
+
+```
+
+gem install passenger
+```
+
+###配置passenger+apache2
+
+```
+
 ```
 
 
