@@ -2,7 +2,7 @@
 layout: post
 title: Git自动更新脚本
 category: 技术
-tags:　PHP Git Linux
+tags:　Linux
 keywords: 
 description:
 ---
