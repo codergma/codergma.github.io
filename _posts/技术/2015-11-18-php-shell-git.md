@@ -17,7 +17,7 @@ description:
 ###apache 有权限运行脚本吗
 
 - 检查脚本的文件权限 
-- php.ini中safe_mode是否为off
+- 检查php.ini中safe_mode是否为off
 
 ###运行其他脚本命令
 
