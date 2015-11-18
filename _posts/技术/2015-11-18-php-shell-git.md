@@ -1,10 +1,10 @@
 ---
 layout: post
-title: Git自动更新脚本
+title: 通过apache执行git代码更新脚本
 category: 技术
-tags:　Linux
+tags: Git
 keywords: 
-description:
+description: 
 ---
 
 服务器上的代码需要频繁的更新，很耗费精力，索性就想写个脚本，让apache调用；本想就几分钟的时间搞定，却发现了不少问题.直接执行脚本没问题，通过exec()函数调用脚本却怎么都不行．
