@@ -1,8 +1,8 @@
 ---
 layout: post
-title: 通过apache执行git代码更新脚本
+title: apache执行git pull
 category: 技术
-tags: Linux
+tags: Linux Apache Git
 keywords: 
 description: 
 ---
