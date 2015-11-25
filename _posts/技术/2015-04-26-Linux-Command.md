@@ -28,6 +28,7 @@ grep [-acinv]  string filename
 -i:忽略大小写
 -n:输出行号
 -v:反向选择
+-r:递归
 ```
 
 ###lsof List Open File
