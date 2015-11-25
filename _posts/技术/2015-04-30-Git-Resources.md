@@ -1,0 +1,29 @@
+---
+layout: post
+title: Git配置
+category: 技术
+tags: Git
+keywords: 
+description: 
+---
+
+###用户名邮箱配置
+
+```
+
+#系统级
+git config --system user.name  <username>
+git config --system user.email <email>
+git config --system --unset user.name  
+git config --system --unset user.email 
+#用户级
+git config --global user.name  <username>
+git config --global user.email <email>
+git config --global --unset user.name  
+git config --global --unset user.email 
+#仓库级
+git config --local user.name  <username>
+git config --local user.email <email>
+git config --local --unset user.name  
+git config --local --unset user.email 
+```
