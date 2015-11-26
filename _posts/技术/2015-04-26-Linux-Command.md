@@ -22,13 +22,15 @@ wc [-cmwlL] filename
 ###grep
 ```
 
-grep [-acinv]  string filename
+grep [-acinvw]  string filename
 -a:将binary文件以text文件方式查找数据
 -c:计算匹配次数　
 -i:忽略大小写
 -n:输出行号
 -v:反向选择
 -r:递归
+-w:匹配完整单词
+-E:使用可扩展的正则表达式
 ```
 
 ###lsof List Open File
