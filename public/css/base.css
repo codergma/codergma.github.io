@@ -107,6 +107,11 @@ body, html {
 }
 #content h2, h3 {
   line-height: 2;
+  font: #FFF;
+}
+
+#content h4, h5 {
+  font: #FFF;
 }
 blockquote p {
   font-size: 20px;
