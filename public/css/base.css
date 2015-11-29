@@ -107,14 +107,14 @@ body, html {
 }
 #content h2, h3 {
   line-height: 2;
-  font: #FFF;
+  font-color: #FFF;
 }
 
 #content h4, h5 {
-  font: #FFF;
+  font-color: #FFF;
 }
 blockquote p {
-  font-size: 20px;
+  font-size: 16px;
 }
 /* 其他配置 */
 .center {
