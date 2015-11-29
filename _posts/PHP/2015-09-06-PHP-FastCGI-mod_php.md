@@ -1,6 +1,6 @@
 ---
 layout: post
-title: PHP填坑记之FastCGI与mod_php详解
+title: PHP运行模式之FastCGI与mod_php
 category: 技术
 tags: PHP
 keywords: 
@@ -39,8 +39,8 @@ LoadModule php5_module modules/libphp5.so
 ###mod_fastcgi模式
 我们先看PHP-FPM官网的说明
 
-PHP-FPM - A simple and robust FastCGI Process Manager for PHP
-PHP-FPM (FastCGI Process Manager) is an alternative PHP FastCGI implementation with some additional features useful for sites of any size, especially busier sites.
+>PHP-FPM - A simple and robust FastCGI Process Manager for PHP
+>PHP-FPM (FastCGI Process Manager) is an alternative PHP FastCGI implementation with some additional features useful for sites of any size, especially busier sites.
 
 PHP-FPM是一个PHP的FastCGI进程管理器，解释的非常简单。这说明PHP-FPM是辅助mod_fastcgi模式进行工作的，然而FastCGI又是个什么东西？管理着什么进程？
 
