@@ -7,7 +7,7 @@ keywords:
 description: 
 ---
 
-###wc Word Count
+###wc (Word Count)
 
 ```
 
@@ -33,7 +33,7 @@ grep [-acinvw]  string filename
 -E:使用可扩展的正则表达式
 ```
 
-###lsof List Open File
+###lsof (List Open File)
 
 ```
 
