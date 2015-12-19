@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Linux常用命令
+title: Linux3:常用命令
 category: 技术
 tags: Linux
 keywords: 
