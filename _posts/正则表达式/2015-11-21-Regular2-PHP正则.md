@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Regular2 : PHP正则
+title: Regular2 PHP正则
 category: 技术
 tags: Regular
 keywords: 
