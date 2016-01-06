@@ -26,6 +26,7 @@ git log dirname/filename       #查看某目录或文件的提交记录
 git log branchname -n filename #具体到哪个分支
 git log -p filename            #查看具体哪一行发生了什么变化
 git blame                      #显示每一行的作者以及提交时间
+git log --since=2010-10-10 --until=2010-10-11  #具体时间段记录
 ```
 
 
