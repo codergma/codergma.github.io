@@ -11,9 +11,9 @@ description:
 ###1.php代码的执行
 !["php-internal"](/public/img/posts/php/php-inernal-01.png)
 ###2.SAPI
->Server Application Programming Interface 指的是PHP的具体应用的编程接口。是PHP和外部程序的编程接口。
+Server Application Programming Interface 指的是PHP的具体应用的编程接口。是PHP和外部程序的编程接口。
 
-> ####apache模式
+####apache模式
 >
 >php5经常需要在apache服务器下运行，一般通过mod_php5模块集成。
 
