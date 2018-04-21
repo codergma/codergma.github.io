@@ -1,0 +1,89 @@
+1.常用命令
+=========
+#### sort 对文件中的行进行排序，并输出到stdout
+    sort [-fbMnur] file 
+    -f --ignore-case 忽略大小写
+    -b --ignore-leading-blanks  忽略开头的空格 
+    -M --month-sort 按月份排序 compare (unknown) < `JAN' < ... < `DEC'
+    -n --numeric-sort 纯数字排序
+    -u --uniq 相同的数据只出现一行
+    -r --reverse 反向排序
+    -t --field-separator 制定分隔符
+    -k --key 以哪个域进行排序    
+     
+    如果要对/etc/passwd,以第六个域的第2个字符到第4个字符进行排序 并去重（以第六个域的第2个字符到第4个字符进行去重）      
+    sort -t':' -k 6.2,6.4 -u /etc/passwd
+     
+#### uniq 去除排序过的文件中的重复行，因此uniq经常和sort合用。也就是说，为了使uniq起作用，所有的重复行必须是相邻的。
+    uniq -i file 
+    -icud
+    -i 忽略大小写
+    -c 计数
+    -u 只显示不重复的行
+    -d 只显示重复的
+#### cut 从一个文本文件或者文本流中提取文本列
+    cut [option] file 
+    -d 分隔符
+    -f 去除第几段
+    -c 字符
+    -b 字节
+    将 PATH 变量取出，我要找出第一到第三，还有第五个路径。
+    echo $PATH | cut -d ':' -f 1-3,5   
+#### wc 统计文件里面有多少单词，多少行，多少字符。
+    wc [option] file
+    -l 多少行
+    -w 多少单词
+    -m 多少字符
+    -c 多少字节
+#### comm 逐行比较已经文件1和文件2
+    comm [option] file1 file2
+    -1 file1有file2没有的行
+    -2 file2有file1没有的行
+    -3 file1和file2都有的行
+#### grep 全面搜索正则表达式并把行打印出来
+    grep [option]... pattern [file]...
+    正则表达式可选参数：
+    -f 正则是个文件
+    -G basic regular expression
+    -E extend regular expression
+    -P perl regular expression
+    -i 忽略大小写
+    其他参数：
+    -v 查找不匹配
+    输出控制参数：
+    -c 统计行数
+    -
+
+#### 两个文件按行比较
+    两个文件的不同行
+    awk '{print $0}' file1 file2 | sort | uniq -u
+    两个文件的相同行
+    awk '{print $0}' file1 file2 | sort | uniq -d
+    file1中有,file2没有的行
+    grep -vif file1 file2	
+    file1中有,file2也有的行
+    grep -if file1 file2
+#### mrt 路由扫描
+    mtr [option] ip/domain
+    -r 以报告的形式显示
+    输出:
+    Loss 丢包率
+    Snt 发送包的数量
+    Last 最后一个包的延迟
+    Avg 平均延迟
+    Best 最小延迟
+    Wrst 最大延迟
+    StDev 标准差
+
+2.bash的环境配置文件
+========
+#### login & non-login shell
+1. 通过tty1~tty6方式登录，需要用户名和密码，这种方式是login shell;
+2. 通过图形化界面登录，不需要重复获取用户名和密码，叫做non-login shell;
+
+#### login shell 读取顺序
+1. 先读取/etc/profile，这个文件会根据用户标志UID决定很多重要的变量，并且会调用外部的设置数据，如/etc/profile.d/*.sh,/etc/inputrc,/etc/sysconfig/i18n。
+2. 按顺序读取 ~/.bash_profile, ~/.bash_login/, ~/.profile 三个文件中的一个，存在这么多文件的原因是照顾从其他shell转换过来的用户习惯(.bash_profile 可能调用.bashrc)。
+
+#### non-login shell 读取
+* 读取~/.bashrc,  ~/.bashrc 会调用/etc/bashrc。
